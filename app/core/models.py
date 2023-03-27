@@ -11,9 +11,9 @@ from django.contrib.auth.models import (
 
 class UserManager(BaseUserManager):
     """Manager for users."""
-    def create_user(self, email, password=None, **extrafield):
+    def create_user(self, email, password=None, **extrafields):
         """Create, save & return a new user"""
-        user = self.model(email=email, **extrafield)
+        user = self.model(email=email, **extrafields)
         user.set_password(password)
         user.save(using=self._db)
 
