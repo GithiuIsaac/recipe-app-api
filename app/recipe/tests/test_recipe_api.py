@@ -23,6 +23,7 @@ from recipe.serializers import (
 
 RECIPES_URL = reverse('recipe:recipe-list')
 
+
 def detail_url(recipe_id):
     """Create and return a unique recipe detail URL."""
     return reverse('recipe:recipe-detail', args=[recipe_id])
@@ -66,7 +67,10 @@ class PrivateRecipeAPITests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.user = create_user(email='user@example.com', password='testpass123')
+        self.user = create_user(
+            email='user@example.com',
+            password='testpass123'
+            )
         # self.user = get_user_model().objects.create_user(
         #     'user@example.com',
         #     'testpass123',
@@ -91,7 +95,10 @@ class PrivateRecipeAPITests(TestCase):
         #     'other@example.com',
         #     'password123',
         # )
-        other_user = create_user(email='other@example.com', password='password123')
+        other_user = create_user(
+            email='other@example.com',
+            password='password123'
+            )
         create_recipe(user=other_user)
         create_recipe(user=self.user)
 
@@ -375,5 +382,3 @@ class PrivateRecipeAPITests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(recipe.ingredients.count(), 0)
-
-

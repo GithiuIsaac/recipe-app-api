@@ -74,6 +74,7 @@ class Tag(models.Model):
         # Returns the string representation the tests are checking for.
         return self.name
 
+
 class Ingredient(models.Model):
     """Ingredient for recipes."""
     name = models.CharField(max_length=255)

@@ -15,6 +15,7 @@ from core.models import (
 )
 from recipe import serializers
 
+
 class RecipeViewSet(viewsets.ModelViewSet):
     """View for managing Recipe APIs"""
     serializer_class = serializers.RecipeDetailSerializer
@@ -37,6 +38,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Create a new recipe."""
         serializer.save(user=self.request.user)
 
+
 class TagViewSet(mixins.DestroyModelMixin,
                  mixins.UpdateModelMixin,
                  mixins.ListModelMixin,
@@ -48,7 +50,10 @@ class TagViewSet(mixins.DestroyModelMixin,
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        """Filter queryset to authenticated user. Return only tags for the authenticated user."""
+        """
+        Filter queryset to authenticated user.
+        Return only tags for the authenticated user.
+        """
         return self.queryset.filter(user=self.request.user).order_by('-name')
 
 
