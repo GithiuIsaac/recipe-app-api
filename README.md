@@ -1,4 +1,4 @@
-# recipe-app-api
+# Recipe App Api
 A backend REST API for a Recipe App with a focus on Test Driven Development. The features include:
 * User Authentication
 * Creating Objects
